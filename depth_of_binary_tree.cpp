@@ -20,6 +20,7 @@ public:
     {
         if (root== nullptr)
             return 0;
+        // 当前节点深度加上当前节点左右子树深度中的最大值 = 当前节点的最大深度
         return 1 + max(maxDepthRecur(root->left), maxDepthRecur(root->right));
     }
 
@@ -37,6 +38,8 @@ public:
             int curDepth = stk.top().second;
             stk.pop();
 
+            // 若当前节点为叶节点，则返回当前深度与以计算最大深度之间的最大值
+            // 作为当前最大深度
             if (cur->left == nullptr && cur->right == nullptr)
                 depth = max(depth, curDepth);
             else
